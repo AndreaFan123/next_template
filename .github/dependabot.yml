@@ -1,0 +1,49 @@
+version: 2
+updates:
+  # npm dependencies
+  - package-ecosystem: 'pnpm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '03:00'
+      timezone: 'Asia/Taipei'
+    open-pull-requests-limit: 10
+    labels:
+      - 'dependencies'
+      - 'pnpm'
+    groups:
+      development-dependencies:
+        dependency-type: 'development'
+        patterns:
+          - '*'
+      production-dependencies:
+        dependency-type: 'production'
+        patterns:
+          - '*'
+      # testing:
+      #   patterns:
+      #     - '@testing-library/*'
+      #     - 'vitest*'
+      #     - '@vitest/*'
+      #     - 'playwright*'
+      linting:
+        patterns:
+          - 'eslint*'
+          - 'prettier*'
+          - '@typescript-eslint/*'
+    ignore:
+      # Ignore major version updates for critical packages
+      - dependency-name: 'next'
+        versions: ['14.x', '15.x']
+      - dependency-name: 'react'
+        versions: ['19.x', '20.x']
+
+  # GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    labels:
+      - 'dependencies'
+      - 'github-actions'

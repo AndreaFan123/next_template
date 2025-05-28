@@ -12,7 +12,9 @@
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
     "prepare": "husky",
-    "commit": "cz"
+    "commit": "cz",
+    "fix": "pnpm run lint:fix && pnpm run format",
+    "release": "commit-and-tag-version"
   },
   "dependencies": {
     "next": "15.1.8",
@@ -30,6 +32,7 @@
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
+    "commit-and-tag-version": "^12.5.1",
     "commitizen": "^4.3.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.8",
@@ -40,7 +43,7 @@
     "prettier": "^3.5.3",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
+  "packageManager": "pnpm@10.10.0",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
